@@ -22,7 +22,7 @@ class Video
 	/** @var array */
 	public $thumbs = [];
 
-	private static $resolution = ['maxres','standard','high', 'medium', 'default', ];
+	private static $resolution = ['maxres', 'standard', 'high', 'medium', 'default',];
 
 
 	/**
@@ -141,12 +141,41 @@ class Video
 	}
 
 	/**
+	 * Get exactly thumb resolution
+	 * posible is 'maxres','standard','high', 'medium', 'default'
+	 * but not every video contain all sizes
+	 * when size is not available and $fallback is TRUE (defalut)
+	 * method try return closest available resolution firstime try bigger then smaller
+	 * when cant return nothing throw exception
+	 *
 	 * @param $resolution
-	 * @return Thumbnail|null
+	 * @param bool $fallback
+	 * @return null|Thumbnail
+	 * @throws \Pixidos\YoutubeApi\Exceptions\YoutubeApiException
 	 */
-	public function getThumb($resolution)
+	public function getThumb($resolution, $fallback = TRUE)
 	{
-		return array_key_exists($resolution, $this->thumbs) ? $this->thumbs[$resolution] : NULL;
+		$resolution = strtolower($resolution);
+
+		$thumb = array_key_exists($resolution, $this->thumbs) ? $this->thumbs[$resolution] : NULL;
+		if (NULL !== $thumb) {
+			return $thumb;
+		}
+
+		$key = array_search($resolution, self::$resolution, TRUE);
+		if (FALSE === $key) {
+			throw new YoutubeApiException($resolution . ' key not exists you can use only one of this ' .
+				implode('|', self::$resolution));
+		}
+
+		if ($fallback) {
+			if ($key > 0) {
+				return $this->getThumb(self::$resolution[--$key]);
+			}
+			return $this->getMaxThumb();
+		}
+
+		return NULL;
 
 	}
 
@@ -161,13 +190,14 @@ class Video
 	}
 
 	/**
+	 * Return max available thumbnail size
 	 * @return Thumbnail
 	 * @throws \Pixidos\YoutubeApi\Exceptions\YoutubeApiException
 	 */
 	public function getMaxThumb()
 	{
-		foreach (self::$resolution as $key){
-			if(array_key_exists($key, $this->thumbs)){
+		foreach (self::$resolution as $key) {
+			if (array_key_exists($key, $this->thumbs)) {
 				return $this->thumbs[$key];
 			}
 		}

@@ -51,13 +51,18 @@ class Video
 	}
 
 	/**
+	 * @internal method is only for internal use
 	 * @param string $title
 	 * @return Video
+	 * @throws YoutubeApiException
 	 */
 	public function setTitle($title)
 	{
-		$this->title = $title;
-		return $this;
+		if (NULL === $this->title) {
+			$this->title = $title;
+			return $this;
+		}
+		throw new YoutubeApiException('You try override read-only title property');
 	}
 
 	/**
@@ -69,13 +74,19 @@ class Video
 	}
 
 	/**
+	 * @internal method is only for internal use
 	 * @param string $description
 	 * @return Video
+	 * @throws \Pixidos\YoutubeApi\Exceptions\YoutubeApiException
 	 */
 	public function setDescription($description)
 	{
-		$this->description = $description;
-		return $this;
+		if (NULL === $this->description) {
+			$this->description = $description;
+			return $this;
+		}
+		throw new YoutubeApiException('You try override read-only description property');
+
 	}
 
 	/**
@@ -107,13 +118,18 @@ class Video
 	}
 
 	/**
+	 * @internal method is only for internal use
 	 * @param int $duration
 	 * @return Video
+	 * @throws \Pixidos\YoutubeApi\Exceptions\YoutubeApiException
 	 */
 	public function setDuration($duration)
 	{
-		$this->duration = $duration;
-		return $this;
+		if (NULL === $this->duration) {
+			$this->duration = $duration;
+			return $this;
+		}
+		throw new YoutubeApiException('You try override read-only duration property');
 	}
 
 	/**

@@ -1,0 +1,63 @@
+{
+  "name": "pixidos/youtube-api",
+  "type": "library",
+  "description": "Youtube-api extension for Nette Framework",
+  "keywords": ["nette", "youtube", "api"],
+  "homepage": "https://github.com/pixidos",
+  "license": ["MIT"],
+  "authors": [
+    {
+      "name": "Ondra Votava",
+      "email": "ondra.votava@pixidos.com"
+    },
+    {
+      "name": "Jan Skrasek",
+      "email": "hrach.cz@gmail.com",
+      "homepage": "http://jan.skrasek.com"
+    },
+    {
+      "name": "Nextras Community",
+      "homepage": "https://github.com/nextras/youtube-api/graphs/contributors"
+    }
+  ],
+  "support": {
+    "email": "dev@pixidos.com",
+    "issues": "https://github.com/Pixidos/Youtube-Api/issues"
+  },
+  "require": {
+    "php": ">=5.6.0",
+    "nette/di": "^2.3",
+    "nette/http": "^2.3",
+    "composer/ca-bundle": "~1.0",
+    "guzzlehttp/guzzle": "~6.2"
+  },
+  "require-dev": {
+
+    "nette/bootstrap": "^2.3",
+    "nette/caching": "^2.3",
+    "nette/database": "^2.3",
+    "nette/php-generator": "^2.3",
+    "nette/finder": "^2.3",
+    "nette/forms": "^2.3",
+    "nette/mail": "^2.3",
+    "nette/robot-loader": "^2.3",
+    "nette/safe-stream": "^2.3",
+    "nette/security": "^2.3",
+    "latte/latte": "^2.3",
+    "tracy/tracy": "^2.3",
+    "nette/application": "^2.3",
+    "nette/tester": "^1.4"
+  },
+  "minimum-stability": "stable",
+  
+  "autoload": {
+    "psr-0": {
+      "Pixidos\\YoutubeApi\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-0": {
+      "PixidosTests\\YoutubeApi\\": "tests/"
+    }
+  }
+}

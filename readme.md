@@ -31,23 +31,6 @@ Documentation
 
 Learn more in the [documentation](https://github.com/Pixidos/GPWebPay/blob/master/docs/en/index.md).
 
-
-### Usage
-
-
-```php
-$reader = new Nextras\YoutubeApi\Reader('<your google-api key>')
-$video = $reader->getVideoByUrl('<youtube url>');
-
-echo $video->title;
-echo $video->duration; // in sec
-echo $video->description;
-echo $video->url;
-foreach ($video->thumbs as $thumb) {
-    echo $video->url; 
-}
-```
-
 ### License
 
 MIT. See full [license](license.md).

@@ -29,10 +29,11 @@ class ReaderTest extends YoutubeApiTestCase
 		/** @var Pixidos\YoutubeApi\Reader $reader */
 		$apiKey = $config['youtubeApi']['apiKey'];
 		if ($apiKey === 'PUT_YOUR_API_KEY_HERE') {
-			if (!isset($_ENV['apiKey'])) {
+			if (!$apiKey = getenv('apiKey')) {
+				dump($apiKey);
+				dump($_ENV);
 				throw new \RuntimeException('You need set your api key in { YoutubeApi/config/youtubeapi.config.neon } ');
 			}
-			$apiKey = $_ENV['apiKey'];
 
 		}
 		return new Pixidos\YoutubeApi\Reader($apiKey);

@@ -14,6 +14,7 @@ namespace PixidosTests\YoutubeApi\DI;
 
 use PixidosTests\YoutubeApi\YoutubeApiTestCase;
 use Tester\Assert;
+
 /**
  * Class YoutubeApiExtensionTest
  * @package PixidosTests\YoutubeApi\DI
@@ -24,19 +25,19 @@ require_once __DIR__ . '/../../bootstrap.php';
 
 class YoutubeApiExtensionTest extends YoutubeApiTestCase
 {
-
-	public function setUp()
-	{
-		parent::setUp();
-		$this->prepareContainer();
-	}
-
-	public function testExtensionRegistred()
-	{
-		$container = $this->getContainer();
-		$youtoubeApi = $container->getByType('Pixidos\YoutubeApi\Reader');
-		Assert::type('Pixidos\YoutubeApi\Reader', $youtoubeApi);
-	}
+    
+    public function setUp()
+    {
+        parent::setUp();
+        $this->prepareContainer();
+    }
+    
+    public function testExtensionRegistred()
+    {
+        $container = $this->getContainer();
+        $youtoubeApi = $container->getByType('Pixidos\YoutubeApi\Reader');
+        Assert::type('Pixidos\YoutubeApi\Reader', $youtoubeApi);
+    }
 }
 
 (new YoutubeApiExtensionTest())->run();

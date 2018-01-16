@@ -11,9 +11,8 @@ namespace Pixidos\YoutubeApi\Exceptions;
 /**
  * Class YoutubeApiException
  * @package Pixidos\YoutubeApi\Exceptions
- * @author Ondra Votava <ondra.votava@pixidos.com>
+ * @author Ondra Votava <me@ondravotava.cz>
  */
-
 class YoutubeApiException extends \Exception
 {
 

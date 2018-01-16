@@ -89,8 +89,7 @@ class Reader extends Nette\Object
 		if (!isset($data->items[0]->snippet) || !isset($data->items[0]->contentDetails)) {
 			throw new YoutubeApiException("Empty YouTube response, probably wrong '{$videoId}' video id.");
 		}
-
-		Debugger::barDump($data);
+		
 		$snippet = $data->items[0]->snippet;
 		$details = $data->items[0]->contentDetails;
 

@@ -93,11 +93,7 @@ class Reader extends Nette\Object
 		$snippet = $data->items[0]->snippet;
 		$details = $data->items[0]->contentDetails;
 
-		$video = new Video($videoId);
-
-		$video->setTitle($snippet->title);
-		$video->setDescription($snippet->description);
-
+		$video = new Video($videoId, $snippet->title, $snippet->description);
 		$interval = new DateInterval($details->duration);
 		$video->setDuration($interval->days * 86400 + $interval->h * 3600 + $interval->i * 60 + $interval->s);
 

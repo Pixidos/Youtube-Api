@@ -50,16 +50,6 @@ class VideoTest extends YoutubeApiTestCase
 		$video = $reader->getVideo('Hdh4b_aMwuA');
 
 		Assert::throws(function () use ($video) {
-			$video->setTitle('rewrite');
-		}, Pixidos\YoutubeApi\Exceptions\YoutubeApiException::class,
-			'You try override read-only title property');
-
-		Assert::throws(function () use ($video) {
-			$video->setDescription('rewrite');
-		}, Pixidos\YoutubeApi\Exceptions\YoutubeApiException::class,
-			'You try override read-only description property');
-
-		Assert::throws(function () use ($video) {
 			$video->setDuration('rewrite');
 		}, Pixidos\YoutubeApi\Exceptions\YoutubeApiException::class,
 			'You try override read-only duration property');

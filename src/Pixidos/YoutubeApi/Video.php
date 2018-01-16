@@ -23,16 +23,21 @@ class Video
 	public $thumbs = [];
 
 	private static $resolution = ['maxres', 'standard', 'high', 'medium', 'default',];
-
-
-	/**
-	 * Video constructor.
-	 * @param $id
-	 */
-	public function __construct($id)
+    
+    
+    /**
+     * Video constructor.
+     *
+     * @param $id
+     * @param $title
+     * @param $description
+     */
+	public function __construct($id, $title, $description)
 	{
 		$this->id = $id;
-	}
+        $this->title = $title;
+        $this->description = $description;
+    }
 
 	/**
 	 * @return mixed
@@ -49,22 +54,7 @@ class Video
 	{
 		return $this->title;
 	}
-
-	/**
-	 * @internal method is only for internal use
-	 * @param string $title
-	 * @return Video
-	 * @throws YoutubeApiException
-	 */
-	public function setTitle($title)
-	{
-		if (NULL === $this->title) {
-			$this->title = $title;
-			return $this;
-		}
-		throw new YoutubeApiException('You try override read-only title property');
-	}
-
+	
 	/**
 	 * @return string
 	 */
@@ -72,23 +62,7 @@ class Video
 	{
 		return $this->description;
 	}
-
-	/**
-	 * @internal method is only for internal use
-	 * @param string $description
-	 * @return Video
-	 * @throws \Pixidos\YoutubeApi\Exceptions\YoutubeApiException
-	 */
-	public function setDescription($description)
-	{
-		if (NULL === $this->description) {
-			$this->description = $description;
-			return $this;
-		}
-		throw new YoutubeApiException('You try override read-only description property');
-
-	}
-
+	
 	/**
 	 * @param bool $https
 	 * @param bool $embed
